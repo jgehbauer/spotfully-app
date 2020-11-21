@@ -48,6 +48,30 @@ if (cluster.isMaster) {
         });
     });
 
+    app.get('/about', function(req, res) {
+        res.render('about', {
+            static_path: '/static',
+            theme: process.env.THEME || 'flatly',
+            flask_debug: process.env.FLASK_DEBUG || 'false'
+        });
+    });
+
+    app.get('/blog', function(req, res) {
+        res.render('blog', {
+            static_path: '/static',
+            theme: process.env.THEME || 'flatly',
+            flask_debug: process.env.FLASK_DEBUG || 'false'
+        });
+    });
+
+    app.get('/press', function(req, res) {
+        res.render('press', {
+            static_path: '/static',
+            theme: process.env.THEME || 'flatly',
+            flask_debug: process.env.FLASK_DEBUG || 'false'
+        });
+    });
+
     app.post('/signup', function(req, res) {
         var item = {
             'email': {'S': req.body.email},
