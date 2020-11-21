@@ -40,6 +40,9 @@ if (cluster.isMaster) {
     app.set('views', __dirname + '/views');
     app.use(bodyParser.urlencoded({extended:false}));
 
+    // !!!! comment out when eb deploy !!!
+    app.use(express.static(__dirname)); 
+
     app.get('/', function(req, res) {
         res.render('index', {
             static_path: '/static',
@@ -55,7 +58,7 @@ if (cluster.isMaster) {
             flask_debug: process.env.FLASK_DEBUG || 'false'
         });
     });
-
+    
     app.get('/blog', function(req, res) {
         res.render('blog', {
             static_path: '/static',
